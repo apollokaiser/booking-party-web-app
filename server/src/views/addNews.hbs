@@ -1,0 +1,111 @@
+<div class="addNewsContainer container-fluid">
+
+<div class="row justify-content-center my-4 fw-bold fs-5">QUẢN LÝ TIN TỨC</div>
+<div class="exit_btn ms-5 mb-3">
+    <a href="/news"><i class="fa-solid fa-angles-left"></i>GO BACK</a>
+</div>
+<div class="container">
+<div class="accordion" id="accordionExample">
+<div class="accordion-item">
+<h2 class="accordion-header" id="headingOne">
+<button
+class="accordion-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#collapseOne"
+aria-expanded="true"
+aria-controls="collapseOne"
+>
+THÔNG TIN BÀI VIẾT
+</button>
+</h2>
+<div
+id="collapseOne"
+class="accordion-collapse collapse show"
+aria-labelledby="headingOne"
+data-bs-parent="#accordionExample"
+>
+<div class="accordion-body">
+<div class="mb-3">
+    <label for="news_title" class="form-label">Tên tiêu đề</label>
+    <input
+    type="email"
+    name="news_title"
+    id="news_title"
+    class="form-control"
+    placeholder="Nhập tên đề tài..."
+    />
+</div>
+<div class="mb-3 col-sm-7 d-flex justify-content-between">
+    <div>
+    <label for="news_hastag" class="form-label">Hastag</label>
+    <input
+    type="email"
+    name="news_hastag"
+    id="news_hastag"
+    class="form-control"
+    placeholder="VD: #tieccuoi, #tainha, ..."
+    />
+    </div>
+    <div>
+    <label for="news_hastag" class="form-label">Dịch vụ tiệc</label>
+    <select class="form-select" name="service" id="service">
+        {{#each serviceList}}
+        <option value="{{this.serviceID}}">{{this.serviceName}}</option>
+        {{/each}}
+    </select>
+    </div>
+</div>
+<div class=" image_upload_area mx-auto mt-5">
+    <label class="upload_area" for="news_upload">
+        <div class="upload_title">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        DRAP AND DROP A IMAGE OR SELECT ADD IMAGE
+    </div>
+        <img src="#" id="demo_image" alt="upload_hinh">
+    </label>
+    <input type="file" hidden accept="image/*" name="news_upload" id="news_upload" >
+</div>
+    <div class="row">
+        <div class="revoke_image col-sm-1 btn btn-danger mx-auto my-2">Bỏ chọn</div>
+        </div>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<h2 class="accordion-header" id="headingTwo">
+<button
+class="accordion-button collapsed news_content"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#collapseTwo"
+aria-expanded="false"
+aria-controls="collapseTwo"
+>
+NỘI DUNG BÀI VIẾT / CONTENT
+</button>
+</h2>
+<div
+id="collapseTwo"
+class="accordion-collapse collapse"
+aria-labelledby="headingTwo"
+data-bs-parent="#accordionExample"
+>
+<div class="accordion-body">
+<textarea name="editor" id="editor"></textarea> <!--Ckeditor create here-->
+<div class="d-flex justify-content-between align-items-center">
+    {{!-- <form class="mt-4" id="postExcelFile" method="post" enctype="multipart/form-data" >
+    <label class="btn btn-primary" for="excelFile">Chọn tệp </label>
+    <input hidden type="file" accept=".xlsx" name="excelFile" id="excelFile">
+    <input class="btn btn-danger" type="submit" value="Import">
+    </form> --}}
+<input class="submit btn btn-success mt-2" type="submit" value="Save"></input>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <script src="/js/addNews.js"></script>
+</div>
+

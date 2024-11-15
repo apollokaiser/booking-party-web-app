@@ -1,0 +1,117 @@
+<div class="add__menu__container">
+        <!--thông báo được lấy ở view news-->
+        <div class="error_message col-ms-3 alert alert-danger d-flex justify-content-center align-items-center" role="alert">
+        <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+        <div>Thêm không thành công</div>
+    </div>
+    <div class="error_message col-ms-3 alert alert-success d-flex justify-content-center align-items-center" role="alert">
+            <i class="fa-regular fa-thumbs-up me-3 text-success"></i>
+        <div>Thêm thành công</div>
+    </div>
+     <!--thông báo được lấy ở view news-->
+      <h3 class="title__admin row justify-content-center fw-bold fs-5 py-3">THÊM THỰC ĐƠN</h3>
+        <a href="/menu" class="btn btn-primary text-light fw-bold text-uppercase ms-3" ><i class="fa-solid fa-angles-left me-2"></i>Trở về</a>
+        <div class="btn btn-warning text-danger fw-bold text-uppercase ms-3" data-bs-toggle="modal" data-bs-target="#addMenuModal">Thêm thực đơn</div>
+    <div class="food_container d-flex flex-wrap col-lg-12 col-sm-12 mt-3 justify-content-center align-items-start">
+        <div class="col-lg-3 me-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="type_title mb-3"><i class="fa-solid fa-mug-hot me-3"></i>Khai vị</div>
+            <div class="foods_content">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        {{#each typeFood.foodKV}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <div class="menu_image">
+                                <img src="/public/images/foods/{{this.image}}" alt="{{this.foodName}}">
+                            </div>
+                            <span class="food_name">{{this.foodName}}</span>
+                        </div>
+                        <div class="food_price d-flex">
+                            <span>{{this.price}} đ</span>
+                            <div class="choose_food ms-3">
+                                <input type="checkbox" name="choose_food{{this.typeID}}" value="{{this.foodID}}" id="choose_food{{this.foodID}}">
+                            </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 me-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="type_title mb-3"><i class="fa-solid fa-utensils me-3"></i>Ăn chính</div>
+            <div class="foods_content">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                         {{#each typeFood.foodAC}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <div class="menu_image">
+                                <img src="/public/images/foods/{{this.image}}" alt="{{this.foodName}}">
+                            </div>
+                            <span class="food_name">{{this.foodName}}</span>
+                        </div>
+                            <div class="food_price d-flex">
+                            <span>{{this.price}} đ</span>
+                            <div class="choose_food ms-3">
+                                <input type="checkbox" name="choose_food{{this.typeID}}" value="{{this.foodID}}" id="choose_food{{this.foodID}}">
+                            </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 me-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="type_title mb-3"><i class="fa-solid fa-martini-glass-citrus me-3"></i>Tráng miệng</div>
+            <div class="foods_content">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                          {{#each typeFood.foodTM}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <div class="menu_image">
+                                <img src="/public/images/foods/{{this.image}}" alt="{{this.foodName}}">
+                            </div>
+                            <span class="food_name">{{this.foodName}}</span>
+                        </div>
+                            <div class="food_price d-flex">
+                            <span>{{this.price}} đ</span>
+                            <div class="choose_food ms-3">
+                                <input type="checkbox" name="choose_food{{this.typeID}}" value="{{this.foodID}}" id="choose_food{{this.foodID}}">
+                            </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMenuModal"><i class="fa-solid fa-circle-info me-2"></i>Thêm thực đơn </h5>
+        <button type="button" class="btn-close delmenu-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <div class="mb-3">
+        <label for="services" class="form-label">Loại dịch vụ</label>
+        <select class="form-select" id="services" name="services" aria-label="Default select example">
+            {{#each services}}
+            <option value="{{this.serviceID}}">{{this.serviceName}}</option>
+            {{/each}}
+        </select>
+    </div>
+            <div class="modal-footer">
+                <button id="close_button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="" id="add_new_menu" type="button" class="btn btn-primary">Lưu</a>
+                </div>
+            </div>
+  </div>
+</div>
+</div>
+<script src="/js/addMenu.js"></script>
+</div>

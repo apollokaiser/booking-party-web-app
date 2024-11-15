@@ -1,0 +1,30 @@
+
+<div class="detail_page" >
+<div class="detail_image" style="background-image: url(/public/images/news/{{image}});">
+
+</div>
+    <div class="detail_container col-sm-11 mx-auto">
+        <div class="col-sm-5">
+            <div class="my-3">
+            <a href="/news"><i class="fa-solid fa-arrow-left-long mx-3"></i><span>Back</span></a>
+            </div>
+            <div class="image_news mx-auto">
+                <div class="wrap mx-auto">
+                    <img src="/public/images/news/{{image}}" alt="{{news_id}}">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <div class="spinebook d-flex justify-content-center align-items-center fw-bold"><span>{{news_title}}</span></div>
+        </div>
+        <div class="col-sm-6 d-flex flex-column">
+            <div class="news_title row my-3 mx-5">
+                <strong>{{news_title}}</strong>
+            </div>
+            <div class="news_body">
+                <p>{{news_content}}</p>
+                <em>Người viết: Admin ({{currentAdmin.admin_name}})</em>
+            </div>
+        </div>
+    </div>
+</div>

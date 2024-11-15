@@ -1,0 +1,75 @@
+  
+  <h3 class="title__admin">Trang quản lý</h3>
+<div class="main container-fluid d-flex justily-content-end">
+  <div class="row col-sm-7 justify-content-evenly align-items-center mx-auto my-3">
+   <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body bg-primary text-light">
+        <h5 class="card-title">Doanh thu tháng này</h5>
+        <div class="card-text col-sm-12 d-flex flex-column justify-content-center align-items-center">
+          <div class="fs-5 fw-bold ms-5"><div>144.444.444 VND</div></div>
+          <div class="d-flex flex-column text-light justilfy-content-center align-items-center">
+            <span class="fw-bold">Tăng trưởng : <span class="text-warning fs-6">Đang tính</span ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body bg-success text-light">
+        <a style="display:block;font-weight: 500;line-height: 1.2; font-size:1.25rem" class="card-title" href="/order/get-pending-order">Số lượng đơn đặt chờ duyệt</a>
+        <div class="card-text col-sm-12 d-flex justilfy-content-between align-items-center">
+          <div class="d-flex flex-column align-items-center col-sm-6 fw-bold">
+            <div class="count text-dark fs-5 d-flex justify-content-center align-items-center">
+              <span>{{VALUE countUnComfirm}}</span>
+              </div>
+            <div>Đơn dịch vụ</div>
+          </div>
+          <div class="col-sm-5 d-flex flex-column justilfy-content-center align-items-center">
+            <span id="date">{{GETDATE 'NOW'}}</span>
+            <a href="/order/get-pending-order" class="btn text-light">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 position-relative">
+    <div class="card">
+      <div class="card-body bg-warning text-light">
+        <h5 class="card-title">Lịch trình thu xếp dịch vụ</h5>
+        <div class="card-text col-sm-12 d-flex justilfy-content-between align-items-center">
+          <div class="col-sm-5 d-flex flex-column justilfy-content-center align-items-center">
+            <span id="date">{{GETDATE 'NOW'}}</span>
+            <a href="#" class="btn text-light">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+          <div class="message_popup text-light">10</div>
+  </div>
+ <div class="col-sm-6">
+  <a href="news">
+    <div class="card">
+      <div class="card-body bg-danger text-light">
+        <h5 class="card-title">Trang tin tức</h5>
+        <div class="card-text col-sm-12 d-flex justify-content-between align-items-center">
+          <div class="col-sm-5 fs-5 fw-bold ms-5">
+            <div class="count text-dark d-flex justify-content-center align-items-center mx-auto">
+              <span>4</span>
+              </div>
+            </div>
+          <div class="col-sm-5 d-flex flex-column text-light justilfy-content-center align-items-center">
+            <span id="date">{{GETDATE 'NOW'}}</span>
+            <a href="#" class="btn text-light">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </a>
+  </div>
+</div>
+</div>
+<div class="tools"></div>
+    <script src="/js/script.js"></script>
+

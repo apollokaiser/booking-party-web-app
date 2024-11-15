@@ -1,0 +1,260 @@
+
+.menu_container{
+    max-width: 100%;
+    min-height: 100%;
+    overflow-x: hidden !important;
+}
+.menu_content{
+    flex-wrap: wrap;
+    margin: 0 0 0px 150px !important;
+    padding: 0 0 !important;
+}
+.menu_content .hide {
+  display: none !important;
+}
+.menu_content>.card {
+    width: 28%;
+    height: 350px;
+    border-radius: 1% !important;
+    border:1px solid #60c515;
+    margin:20px 25px 0 0 !important;
+
+
+}
+.menu_content .card .card-title{
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 5px !important;
+    display: inline-block ;
+    padding: 20px;
+    margin: 0 0 0 !important;
+    background-color: #60c515;
+    width: 100%;
+}
+.menu_content .card .card-body{
+    width: 100%;
+    height: 100%;
+    padding:0 !important;
+}
+.card .card {
+    border-radius: 0% !important;
+    width: 100% !important;
+    height: 90%;
+    margin-bottom: 12px !important;
+    padding-bottom: 20px !important;
+    border-bottom: 1px dashed #ccc;
+
+}
+.card .list-group-item{
+    height: 70px;
+    padding: 3px !important;
+
+}
+.card li{
+    border-bottom: 1px dashed #ccc ;
+}
+.card ul{
+    height: 100%;
+    overflow-y: auto;
+}
+.food_info{
+    height: 100%;
+}
+.food_info .menu_image{
+    width: 27%;
+    margin-right: 7px;
+}
+.food_name{
+    width: 70%;
+    font-weight: 500;
+}
+.food_image_area{
+    width: 200px;
+    border: 5px dashed #42d392;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    color: #42d392;
+    font-weight: bold !important;
+}
+.food_image_area img{
+    display: none;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .food_image_area img.show{
+    display: block;
+  }
+  .upload_food_area{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  
+  }
+  .upload_food_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+  }
+  .upload_food_title i{
+    font-size: 40px;
+  }
+  .upload_food_area.dragover {
+    border:4px solid turquoise;
+  }
+
+/*NOTE:add-menu*/
+.add__menu__container{
+    max-width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+.add__menu__container .title__admin{
+    color: gold !important;
+    background-color: cornsilk;
+}
+.food_container{
+    border: 5px double gold;
+    padding: 10px;
+}
+.food_container>.col-lg-3{
+    border-right: 3px double #60c515;
+    width: 32% !important;
+    max-height: 600px;
+    padding: 0 !important;
+}
+.food_container .card {
+    border-radius: 0% !important;
+    width: 100%;
+    border: 0;
+}
+.foods_content{
+    max-height: 100%;
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+}
+.foods_content .card .list-group-item{
+    height: 70px;
+    padding: 3px !important;
+}
+.choose_food input{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.type_title{
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 600;
+    color: #bc06ed;
+}
+.type_title i {
+    color: #ed0735;
+}
+
+.result_message{
+    position: absolute;
+    top: 0%;
+    left: -100%;
+  }
+  .result_message.show{
+    animation: show_message 5s linear; 
+  }
+  @keyframes show_message {
+    0%{
+      top: 0%;
+      left: -100%;
+    } 
+    10% {
+      top:0%;
+      left:1%;
+    }
+    40% {
+      top:0%;
+      left:1%;
+    }60%{
+      top:0%;
+      left:-20%
+    }
+    70%{
+      top:0%;
+      left:-30%;
+    } 80%{
+      top:0%;
+      left:-50%;
+      }
+    100% {
+      top:0%;
+      left:-100%;
+    }
+}
+#update_menu{
+  width: 100%;
+  cursor: pointer;
+}
+#updateMenuModal #close_button{
+  width: 100%;
+  cursor: pointer;
+}
+#update__container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin:0 0 20px 0  !important;
+  padding: 0 !important;
+}
+#update__container>.card {
+  width: 80%;
+  height: 350px;
+  border-radius: 1% !important;
+  border:1px solid #60c515;
+  margin:10px 25px 0 0 !important;
+}
+#update__container .card .card-title{
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 5px !important;
+  display: inline-block ;
+  padding: 20px;
+  margin: 0 0 0 !important;
+  background-color: #60c515;
+  width: 100%;
+}
+#update__container .card .card-body{
+  width: 100%;
+  height: 100%;
+  padding:0 !important;
+}
+#update__container .menu_image{
+  width: 24%;
+}
+#update__container .card .list-group-item {
+  height: 90px;
+}
+.delete_food{
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s linear;
+}
+.delete_food:hover{
+  border: 1px solid #e81515;
+  color: red;
+}
+.list-group-item.hide{
+  display: none !important;
+}

@@ -1,0 +1,222 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/order.css">
+</head>
+<body>
+    <div class="add__menu__container">
+      <h3 class="title__admin row justify-content-center fw-bold fs-5 py-3">CẬP NHẬT ĐƠN TIỆC</h3>
+      <!--Lấy từ view news-->
+              <div class="error_message col-ms-3 alert alert-danger d-flex justify-content-center align-items-center" role="alert">
+        <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+        <div>Cập nhât không thành công</div>
+    </div>
+    <div class="error_message col-ms-3 alert alert-success d-flex justify-content-center align-items-center" role="alert">
+            <i class="fa-regular fa-thumbs-up me-3 text-success"></i>
+        <div>Cập nhật thành công</div>
+    </div>
+     <!--Lấy từ view news-->
+        <a href="/order/" class="btn btn-primary text-light fw-bold text-uppercase ms-3" ><i class="fa-solid fa-angles-left me-2"></i>Trở về</a>
+        <div id="update-btn" class="btn btn-warning text-danger fw-bold text-uppercase ms-3" data-bs-toggle="modal" data-bs-target="#updateMenuModal">Cập nhật</div>
+        <div class="orderInfo mt-3 p-3">
+            <h4 class="text-center">Thông tin khách hàng</h4>
+            <div class="order-container d-flex flex-column justify-content-center align-items-center">
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Dịch vụ</div>
+                    <div class="col-sm-6">
+                        <select name="service" id="service">
+                            {{#each service}}
+                            <option  {{#if_equal ../orderParty.serviceID this.serviceID }}selected{{/if_equal}} value="{{this.serviceID}}">{{this.serviceName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Tên khách hàng</div>
+                    <div class="col-sm-6">
+                        <input type="text" name="userName" id="user-name" value="{{orderParty.userName}}">
+                    </div>
+                </div>
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Email</div>
+                    <div class="col-sm-6">
+                        <input type="email" name="userEmail" id="user-email" value="{{orderParty.userEmail}}">
+                    </div>
+                </div>
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Số điện thoại</div>
+                    <div class="col-sm-6">
+                        <input type="number" name="phone" id="user-phone" value="{{orderParty.phone}}">
+                    </div>
+                </div>
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Số lượng khách</div>
+                    <div class="col-sm-6">
+                        <input type="number" name="attendeesCount" id="attendeesCount" value="{{orderParty.attendeesCount}}">
+                    </div>
+                </div>
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Ngày đặt tiệc</div>
+                    <div class="col-sm-6">
+                        <input type="date" name="orderDate" id="order-date"  min="{{DATE_FORMAT 'NOW' 'yyyy-MM-dd'}}" value="{{DATE_FORMAT orderParty.orderDate 'yyyy-MM-dd'}}">
+                    </div>
+                </div>
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Phòng đặt tiệc</div>
+                    <div class="col-sm-6">
+                        <select name="room" id="room">
+                            {{#each room}}
+                            <option {{#if_equal ../orderParty.roomID this.roomID }}selected{{/if_equal}} value="{{this.roomID}}">{{this.roomName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="order-item d-flex justify-content-between align-items-center">
+                    <div class="col-sm-5">Giá phòng</div>
+                    <div class="col-sm-6 room_price">
+                            {{#each room}}
+                            <div {{#if_equal ../orderParty.roomID this.roomID}}class="show"{{/if_equal}} id="{{this.roomID}}"><span>{{this.price}}</span>{{VND this.price}}</div>
+                            {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="food_container d-flex flex-wrap col-lg-12 col-sm-12 mt-3 justify-content-center align-items-start">
+        <div class="col-lg-3 me-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="type_title mb-3"><i class="fa-solid fa-mug-hot me-3"></i>Khai vị</div>
+            <div class="foods_content">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        {{#each typeFood.foodKV}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                             <input class="typeID" type="hidden" value="{{this.typeID}}">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <div class="menu_image">
+                                <img src="/public/images/foods/{{this.image}}" alt="{{this.foodName}}">
+                            </div>
+                            <span class="food_name">{{this.foodName}}</span>
+                        </div>
+                        <div class="food_price d-flex">
+                             <span>{{this.price}}</span>
+                            <span>{{VND this.price}}</span>
+                            <div class="choose_food ms-3">
+                                <input type="checkbox" name="choose_food{{this.typeID}}" value="{{this.foodID}}" id="choose_food{{this.foodID}}">
+                            </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 me-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="type_title mb-3"><i class="fa-solid fa-utensils me-3"></i>Ăn chính</div>
+            <div class="foods_content">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                         {{#each typeFood.foodAC}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                             <input class="typeID" type="hidden" value="{{this.typeID}}">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <div class="menu_image">
+                                <img src="/public/images/foods/{{this.image}}" alt="{{this.foodName}}">
+                            </div>
+                            <span class="food_name">{{this.foodName}}</span>
+                        </div>
+                            <div class="food_price d-flex">
+                                <span>{{this.price}}</span>
+                            <span>{{VND this.price}}</span>
+                            <div class="choose_food ms-3">
+                                <input type="checkbox" name="choose_food{{this.typeID}}" value="{{this.foodID}}" id="choose_food{{this.foodID}}">
+                            </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 me-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="type_title mb-3"><i class="fa-solid fa-martini-glass-citrus me-3"></i>Tráng miệng</div>
+            <div class="foods_content">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                          {{#each typeFood.foodTM}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                             <input class="typeID" type="hidden" value="{{this.typeID}}">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <div class="menu_image">
+                                <img src="/public/images/foods/{{this.image}}" alt="{{this.foodName}}">
+                            </div>
+                            <span class="food_name">{{this.foodName}}</span>
+                        </div>
+                            <div class="food_price d-flex">
+                                <span>{{this.price}}</span>
+                            <span>{{VND this.price}}</span>
+                            {{!-- //NOTE: Chuyen di thi bo phan nay --}}
+                            <div class="choose_food ms-3"> 
+                                <input type="checkbox" name="choose_food{{this.typeID}}" value="{{this.foodID}}" id="choose_food{{this.foodID}}">
+                            </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reset mt-3 ms-5 col-sm-10 text-end"><button class="btn btn-danger"><i class="fa-solid fa-rotate-right"></i></button></div>
+        <div id="update__container">
+            <div class="card">
+            <div class="card-body">
+            <span class="card-title">Danh sách thực đơn</span>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <input id="orderID" type="hidden" value="{{orderParty.orderID}}">
+                        <input id="orderTotal" type="hidden" value="{{orderParty.orderTotal}}">
+                        {{#each orderParty.detail}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                         <input class="typeID" type="hidden" value="{{this.typeID}}">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <span class="food_name" title="{{this.description}}">{{this.foodName}}</span>
+                        </div>
+                        <div class="food_price col-lg-3"><span>{{this.price}}</span>{{VND this.price}}</div>
+                        <i class="me-3 fa-solid fa-xmark delete_food"></i>
+                        <input type="hidden" value="{{this.foodID}}">
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+        </div>
+    </div>
+        </div>
+{{!-- NOTE: Thêm thực đơn --}}
+        <div class="modal fade" id="updateMenuModal" tabindex="-1" aria-labelledby="updateMenuModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateMenuModalLabel"><i class="fa-solid fa-circle-info me-2"></i>Bạn muốn cập nhật thực đơn ?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <div class="mb-3">
+        <p class="text-center fw-bold">Bạn muốn cập nhật khách hàng {{orderParty.userName}} ?</span></p>
+        <p class="text-center">Tổng đơn hiện tại sẽ là <strong id="order-total"></strong></p>
+        <p class="text-center">Xác nhận cập nhật ?</p>
+    </div>
+            <div class="modal-footer">
+                <button id="close_button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="" id="update_menu" type="button" class="btn btn-primary">Lưu</a>
+                </div>
+            </div>
+  </div>
+</div>
+</div>
+<script src="/js/updateOrder.js"></script>
+</div>
+</body>
+
+
+

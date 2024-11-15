@@ -1,0 +1,139 @@
+<div class="menu_container">
+    <h3 class="title__admin row justify-content-center fw-bold fs-5 py-3">QUẢN LÝ THỰC ĐƠN</h3>
+        <div class="result_message col-ms-3 alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div id="result_message"></div>
+        </div>
+    <nav class="news_nav d-flex justify-content-between col-sm-11 ms-auto me-0 mb-3">
+        <div class="d-flex">
+        <a href="/menu/add-menu" class="nav-tools p-3"><i class="fa-solid fa-bowl-food me-2"></i><span>Thêm thực đơn</span></a>
+        <a href="" class="nav-tools p-3" data-bs-toggle="modal" data-bs-target="#addFoodModal"><i class="fa-solid fa-burger me-2"></i>Thêm món ăn</a>
+        <a href="#" class="nav-tools ms-2 p-3"><i class="fa-solid fa-folder-plus me-2"></i><span>Nhập</span></a>
+        <div class="tools_selected">
+            <a href="#" id="delete_menu" class="nav-tools ms-2 p-3" data-bs-toggle="modal" data-bs-target="#deleteMenuModal"><i class="fa-solid fa-trash me-2"></i><span>Xóa</span></a>
+            <a href="" id="update_menu" class="nav-tools ms-2 p-3"><i class="fa-solid fa-pen-to-square me-2" ></i><span>Sửa</span></a>
+        </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <div class="tools_selected nav-tools ms-2 p-3"><i class="fa-solid fa-xmark me-2"></i>
+                <span>Đã chọn</span>
+                <span class="ms-1 fw-bold count_selected"></span>
+            </div>
+            <div class="tools_selected nav-tools ms-2 p-3">
+                <span class="me-1">Chọn tất cả</span>
+                    <div class="checkall">
+                        <input type="checkbox" name="checkall" value="all" id="checkall">
+                        <label for="checkall"></label>
+                    </div>
+            </div>
+            <a href="#" class="nav-tools ms-2 p-3"><span>Sắp xếp</span><i class="fa-solid fa-arrow-down ms-2"></i></a>
+            <a href="#" class="nav-tools ms-2 p-3"><span>Chi tiết</span><i class="fa-solid fa-info ms-2"></i></a>
+        </div>
+    </nav>
+            
+    <div class="menu_content container d-flex justify-content-center align-items-center">
+        {{#each menu.menuInfo}}
+        <div class="card">
+                <div class="checkbox">
+                    <input type="checkbox" name="checkbox" value="{{this.info.menuID}}" id="myCheckbox{{this.info.menuID}}">
+                    <label for="myCheckbox{{this.info.menuID}}"></label>
+                </div>
+            <div class="card-body">
+            <span class="card-title">{{this.info.menuName}}</span>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        {{#each this.detail}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="food_info col-lg-8 d-flex justify-content-start align-items-center">
+                            <div class="menu_image">
+                                <img src="public/images/foods/{{this.image}}" alt="{{this.image}}">
+                            </div>
+                            <span class="food_name" title="{{this.description}}">{{this.foodName}}</span>
+                        </div>
+                        <div class="food_price col-lg-3">{{VND this.price}}</div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+        </div>
+    </div>
+    {{/each}}
+    <h2 class="text-center hide d-flex flex-column justify-content-center align-items-center mx-auto"><i class="fa-regular fa-face-sad-tear"></i> Đang không có thực đơn nào. <a class="text-primary" href="/menu/add-menu">Thêm ngay</a></h2>
+    </div>
+    {{#ISEMPTY menu.menuInfo}}
+    <h2 class="text-center d-flex flex-column justify-content-center align-items-center mx-auto"><i class="fa-regular fa-face-sad-tear"></i> Đang không có thực đơn nào. <a class="text-primary" href="/menu/add-menu">Thêm ngay</a></h2>
+{{/ISEMPTY}}
+    {{!-- NOTE: Add-menu --}}
+    <div class="modal fade" id="addFoodModal" tabindex="-1" aria-labelledby="addFoodModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addFoodModal"><i class="fa-solid fa-circle-info me-2"></i>Thêm món ăn </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+  <label for="foodName" class="form-label">Tên món</label>
+  <input type="text" required class="form-control" id="food_name" placeholder="tên món ăn ..">
+</div>
+      <div class="mb-3">
+  <label for="price" class="form-label">Giá</label>
+  <input type="text" required class="form-control" id="price">
+</div>
+    <div class="mb-3">
+        <label for="type_food" class="form-label">Loại món ăn</label>
+        <select class="form-select" id="type_food" name="type_food" aria-label="Default select example">
+            {{#each type}}
+            <option {{#if_equal this.typeID 1}}selected{{/if_equal}} value="{{this.typeID}}">{{this.typeName}}</option>
+            {{/each}}
+        </select>
+    </div>
+        <div class="mb-3">
+        <div class="food_image_area mx-auto mt-5">
+    <label class="upload_food_area" for="food_upload">
+        <div class="upload_food_title">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        DRAP AND DROP A IMAGE OR SELECT ADD IMAGE
+    </div>
+        <img src="#" id="preview_image" alt="upload_hinh">
+    </label>
+    <input type="file" hidden accept="image/*" name="food_upload" id="food_upload" >
+</div>
+    <div class="row">
+        <div class="revoke_image col-sm-4 btn btn-danger mx-auto my-2">Bỏ chọn</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+    </div>
+
+            <div class="modal-footer">
+                <button id="close_button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="" id="add_new_food" type="button" class="btn btn-primary">Lưu</a>
+                </div>
+            </div>
+  </div>
+</div>
+</div>
+{{!-- NOTE:delete_menu  --}}
+    <div class="modal fade" id="deleteMenuModal" tabindex="-1" aria-labelledby="deleteMenuModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteMenuModalLabel"><i class="fa-solid fa-circle-info me-2"></i>Thông báo</h5>
+        <button type="button" class="btn-close delmenu-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">Bạn đã chọn <span class="count_selected"> thực đơn</span></p>
+        <p class="text-center">Xác nhận xóa ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="" id="delete__confirm" type="button" class="btn btn-primary">Xác nhận</a>
+        </div>
+    </div>
+  </div>
+</div>
+    <script src="/js/menu.js"></script>
+</div>
