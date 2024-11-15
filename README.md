@@ -16,7 +16,7 @@ It'll run both server and client</p>
 `npm start`
 <p>And run server:</p>
 
-`cd .\client\` 
+`cd .\server\` 
 `npm start`
 
 About database,create db with name : <code>orderparty</code> and paste <code>orderparties.sql</code> data into the mySQL query 
