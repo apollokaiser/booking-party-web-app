@@ -1,0 +1,12 @@
+{
+    "name": "party_booking_project",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
+      "start-client": "npm --prefix client run dev",
+      "start-server": "npm --prefix server start"
+    },
+    "devDependencies": {
+      "concurrently": "^8.2.0"
+    }
+  }
