@@ -10,11 +10,13 @@ You can run this project (Recommended): `npm start`
 It'll run both server and client</p>
 
 
-And if you do not want to run by that way, you'll run normally: 
+<p>And if you do not want to run by that way, you'll run normally:</p> 
+
 `cd .\client\` 
 `npm start`
-<div>And run server: </div>
-`cd .\server\`
+<p>And run server:</p>
+
+`cd .\client\` 
 `npm start`
 
 About database,create db with name : <code>orderparty</code> and paste <code>orderparties.sql</code> data into the mySQL query 
